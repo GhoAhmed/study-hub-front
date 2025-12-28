@@ -1,1 +1,159 @@
-<p>home works!</p>
+<div class="home-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <i class="icon-book"></i>
+                    <span>StudyHub</span>
+                </div>
+                <div class="nav-menu">
+                    <button class="nav-item active">
+                        <i class="icon-home"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="icon-calendar"></i>
+                        <span>Schedule</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="icon-file"></i>
+                        <span>Notes</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="icon-settings"></i>
+                        <span>Settings</span>
+                    </button>
+                    <button class="nav-item logout" (click)="onLogout()">
+                        <i class="icon-logout"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <div class="header">
+            <h1>Welcome back, Student!</h1>
+            <p>Here's what's happening with your studies today</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card blue">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Study Hours</p>
+                        <h3 class="stat-value">24.5</h3>
+                    </div>
+                    <i class="icon-trending-large"></i>
+                </div>
+                <p class="stat-footer">+12% from last week</p>
+            </div>
+
+            <div class="stat-card purple">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Active Courses</p>
+                        <h3 class="stat-value">6</h3>
+                    </div>
+                    <i class="icon-book-large"></i>
+                </div>
+                <p class="stat-footer">2 assignments due soon</p>
+            </div>
+
+            <div class="stat-card pink">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <p class="stat-label">Avg. Score</p>
+                        <h3 class="stat-value">87%</h3>
+                    </div>
+                    <i class="icon-target-large"></i>
+                </div>
+                <p class="stat-footer">Keep up the great work!</p>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="panel">
+                <h2>Upcoming Classes</h2>
+                <div class="class-list">
+                    <div class="class-item" *ngFor="let class of upcomingClasses">
+                        <div class="class-indicator" [style.background]="class.color"></div>
+                        <div class="class-details">
+                            <p class="class-name">{{class.name}}</p>
+                            <p class="class-time">{{class.time}}</p>
+                        </div>
+                        <button class="btn-join">Join →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item" *ngFor="let activity of recentActivities">
+                        <div class="activity-icon">
+                            <i class="icon-file"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p class="activity-action">{{activity.action}}</p>
+                            <p class="activity-meta">{{activity.subject}} • {{activity.time}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-grid mt-4">
+            <div class="panel">
+                <h2>Study Progress</h2>
+                <div class="progress-list">
+                    <div class="progress-item" *ngFor="let course of studyProgress">
+                        <div class="progress-header">
+                            <span class="progress-name">{{course.name}}</span>
+                            <span class="progress-percent">{{course.progress}}%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" [style.width.%]="course.progress"
+                                [style.background]="course.color"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Assignments Due</h2>
+                <div class="assignment-list">
+                    <div class="assignment-item" *ngFor="let assignment of assignments">
+                        <div class="assignment-info">
+                            <p class="assignment-title">{{assignment.title}}</p>
+                            <p class="assignment-course">{{assignment.course}}</p>
+                        </div>
+                        <div class="assignment-due" [class.urgent]="assignment.urgent">
+                            <i class="icon-clock"></i>
+                            <span>{{assignment.dueDate}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel mt-4">
+            <h2>Weekly Study Schedule</h2>
+            <div class="schedule-grid">
+                <div class="schedule-day" *ngFor="let day of weekSchedule">
+                    <div class="day-header">{{day.day}}</div>
+                    <div class="day-sessions">
+                        <div class="session" *ngFor="let session of day.sessions" [style.background]="session.color">
+                            <p class="session-name">{{session.name}}</p>
+                            <p class="session-time">{{session.time}}</p>
+                        </div>
+                        <div class="session-empty" *ngIf="day.sessions.length === 0">
+                            No classes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

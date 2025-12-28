@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="login-page">
+    <div class="login-card">
+        <div class="card-header">
+            <i class="icon-book"></i>
+            <h2>Welcome Back</h2>
+            <p>Log in to continue your learning journey</p>
+            <div *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</div>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label>Email Address</label>
+                <div class="input-wrapper">
+                    <i class="icon-mail"></i>
+                    <input type="email" [(ngModel)]="email" placeholder="your@email.com" class="form-input" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="icon-lock"></i>
+                    <input type="password" [(ngModel)]="password" placeholder="••••••••" class="form-input" />
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="checkbox-label">
+                    <input type="checkbox" [(ngModel)]="rememberMe" />
+                    <span>Remember me</span>
+                </label>
+                <a href="#" class="forgot-link">Forgot?</a>
+            </div>
+
+            <button (click)="onLogin()" class="btn-submit">Sign In</button>
+        </div>
+
+        <div class="card-footer">
+            <p>
+                Don't have an account?
+                <a routerLink="/register" class="link">Sign Up</a>
+            </p>
+            <button routerLink="/" class="btn-back">← Back to Home</button>
+        </div>
+    </div>
+</div>

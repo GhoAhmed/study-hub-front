@@ -4,7 +4,14 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { filter, Subscription } from 'rxjs';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCalendar, faHome, faTasks } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCalendar,
+  faHome,
+  faTasks,
+  faSignOutAlt,
+  faUser,
+  faCog,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -88,4 +95,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   faHome = faHome;
   faTasks = faTasks;
   faCalendar = faCalendar;
+  faSignOutAlt = faSignOutAlt;
+  faUser = faUser;
+  faCog = faCog;
 }

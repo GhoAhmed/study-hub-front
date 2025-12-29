@@ -1,30 +1,49 @@
 <div class="welcome-page">
     <app-navbar />
 
-    <div class="container hero-section">
-        <div class="hero-content">
-            <h1>Your Journey to Academic Excellence</h1>
-            <p>Join thousands of students who are transforming their study habits with our comprehensive learning
-                platform</p>
-            <button routerLink="/register" class="btn-hero">Get Started Free</button>
-        </div>
+    <section class="hero-section">
+        <div class="container">
 
-        <div class="features-grid">
-            <div class="feature-card">
-                <fa-icon [icon]="faUsers"></fa-icon>
-                <h3>Collaborative Learning</h3>
-                <p>Connect with peers, share notes, and study together in real-time</p>
+            <div class="hero-content">
+                <h1>Your Journey to Academic Excellence</h1>
+                <p>
+                    Join thousands of students who are transforming their study habits
+                    with our comprehensive learning platform.
+                </p>
+
+                <div class="hero-actions">
+                    <button routerLink="/register" class="btn-hero">
+                        Get Started Free
+                    </button>
+                </div>
             </div>
-            <div class="feature-card">
-                <fa-icon [icon]="faTable"></fa-icon>
-                <h3>Goal Tracking</h3>
-                <p>Set objectives, monitor progress, and achieve your academic goals</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-wrapper">
+                        <fa-icon [icon]="faUsers"></fa-icon>
+                    </div>
+                    <h3>Collaborative Learning</h3>
+                    <p>Connect with peers, share notes, and study together in real-time.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-wrapper">
+                        <fa-icon [icon]="faTable"></fa-icon>
+                    </div>
+                    <h3>Goal Tracking</h3>
+                    <p>Set objectives, monitor progress, and achieve your academic goals.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-wrapper">
+                        <fa-icon [icon]="faNewspaper"></fa-icon>
+                    </div>
+                    <h3>Performance Analytics</h3>
+                    <p>Get insights into your learning patterns and optimize your study time.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <fa-icon [icon]="faNewspaper"></fa-icon>
-                <h3>Performance Analytics</h3>
-                <p>Get insights into your learning patterns and optimize your study time</p>
-            </div>
+
         </div>
-    </div>
+    </section>
 </div>

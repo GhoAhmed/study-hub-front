@@ -1,18 +1,40 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../../ui/navbar/navbar.component';
+import {
+  faClock,
+  faBook,
+  faBullseye,
+  faChartLine,
+  faFileAlt,
+  faCalendarDays,
+  faHeart,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, FontAwesomeModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  faClock = faClock;
+  faBook = faBook;
+  faBullseye = faBullseye;
+  faChartLine = faChartLine;
+  faFileAlt = faFileAlt;
+  faCalendarDays = faCalendarDays;
+  faHeart = faHeart;
+
   currentUser: string = 'Student';
+  private subscriptions: Subscription = new Subscription();
+
+  // Sample Data
   upcomingClasses = [
     { name: 'Advanced Mathematics', time: '10:00 AM', color: '#3b82f6' },
     { name: 'Physics Lab', time: '2:00 PM', color: '#10b981' },
@@ -89,27 +111,27 @@ export class HomeComponent implements OnInit {
       day: 'Fri',
       sessions: [{ name: 'Chemistry', time: '11:00 AM', color: '#f59e0b' }],
     },
-    {
-      day: 'Sat',
-      sessions: [],
-    },
-    {
-      day: 'Sun',
-      sessions: [],
-    },
+    { day: 'Sat', sessions: [] },
+    { day: 'Sun', sessions: [] },
   ];
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    const userName = localStorage.getItem('name');
-    if (userName) {
-      this.currentUser = userName;
-    }
+    // Subscribe to currentUser from AuthService
+    this.subscriptions.add(
+      this.authService.currentUser$.subscribe((user) => {
+        this.currentUser = user?.name || 'Student';
+      })
+    );
   }
 
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

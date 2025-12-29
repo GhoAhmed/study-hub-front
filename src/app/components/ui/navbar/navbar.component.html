@@ -2,12 +2,12 @@
     <div class="container-fluid px-4">
 
         <!-- Brand -->
-        <a class="navbar-brand fw-bold text-primary" (click)="navigateTo('/')">
+        <a class="navbar-brand fw-bold text-primary mx-4" (click)="navigateTo('/')">
             StudyHub
         </a>
 
         <!-- Mobile Toggle -->
-        <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-label="Toggle navigation">
+        <button class="navbar-toggler mx-2" type="button" (click)="toggleMenu()" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -18,19 +18,19 @@
             <ul class="navbar-nav me-auto">
 
                 <li class="nav-item" *ngIf="isAuthenticated">
-                    <a class="nav-link" [class.active]="isActive('/home')" (click)="navigateTo('/home')">
+                    <a class="nav-link me-4" [class.active]="isActive('/home')" (click)="navigateTo('/home')">
                         Home
                     </a>
                 </li>
 
                 <li class="nav-item" *ngIf="isAuthenticated">
-                    <a class="nav-link" [class.active]="isActive('/tasks')" (click)="navigateTo('/tasks')">
+                    <a class="nav-link me-4" [class.active]="isActive('/tasks')" (click)="navigateTo('/tasks')">
                         Tasks
                     </a>
                 </li>
 
                 <li class="nav-item" *ngIf="isAuthenticated">
-                    <a class="nav-link" [class.active]="isActive('/sessions')" (click)="navigateTo('/sessions')">
+                    <a class="nav-link me-4" [class.active]="isActive('/sessions')" (click)="navigateTo('/sessions')">
                         Sessions
                     </a>
                 </li>
@@ -44,7 +44,7 @@
             </ul>
 
             <!-- RIGHT SIDE -->
-            <div class="d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-2">
 
                 <!-- NOT AUTHENTICATED LINKS -->
                 <ng-container *ngIf="!isAuthenticated">
@@ -64,7 +64,7 @@
                 </ng-container>
 
                 <!-- AUTHENTICATED DROPDOWN (DESKTOP ONLY) -->
-                <div *ngIf="isAuthenticated" class="dropdown d-none d-lg-block">
+                <div *ngIf="isAuthenticated" class="dropdown d-none d-lg-block mx-4">
 
                     <button class="btn user-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -80,16 +80,22 @@
 
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                         <li>
-                            <a class="dropdown-item" (click)="navigateTo('/profile')">Profile</a>
+                            <a class="dropdown-item" (click)="navigateTo('/profile')">
+                                <fa-icon [icon]="faUser" class="me-2"></fa-icon> Profile
+                            </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" (click)="navigateTo('/settings')">Settings</a>
+                            <a class="dropdown-item" (click)="navigateTo('/settings')">
+                                <fa-icon [icon]="faCog" class="me-2"></fa-icon> Settings
+                            </a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
                         <li>
-                            <a class="dropdown-item text-danger" (click)="onLogout()">Logout</a>
+                            <a class="dropdown-item text-danger log-out" (click)="onLogout()">
+                                <fa-icon [icon]="faSignOutAlt" class="me-2"></fa-icon> Logout
+                            </a>
                         </li>
                     </ul>
 

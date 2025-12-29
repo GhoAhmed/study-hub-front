@@ -1,124 +1,151 @@
-<!-- home.component.html -->
 <div class="home-page">
-    <!-- Use Navbar Component -->
     <app-navbar />
 
     <div class="container main-content">
+
+        <!-- HEADER -->
         <div class="header">
-            <h1>Welcome back, {{currentUser}}!</h1>
+            <h1>Welcome <span class="username">{{ currentUser }}</span></h1>
             <p>Here's what's happening with your studies today</p>
         </div>
 
+        <!-- STATS -->
         <div class="stats-grid">
             <div class="stat-card blue">
                 <div class="stat-content">
-                    <div class="stat-info">
+                    <div>
                         <p class="stat-label">Study Hours</p>
                         <h3 class="stat-value">24.5</h3>
                     </div>
-                    <i class="icon-trending-large"></i>
+                    <fa-icon [icon]="faChartLine" class="stat-icon"></fa-icon>
                 </div>
                 <p class="stat-footer">+12% from last week</p>
             </div>
 
             <div class="stat-card purple">
                 <div class="stat-content">
-                    <div class="stat-info">
+                    <div>
                         <p class="stat-label">Active Courses</p>
                         <h3 class="stat-value">6</h3>
                     </div>
-                    <i class="icon-book-large"></i>
+                    <fa-icon [icon]="faBook" class="stat-icon"></fa-icon>
                 </div>
                 <p class="stat-footer">2 assignments due soon</p>
             </div>
 
             <div class="stat-card pink">
                 <div class="stat-content">
-                    <div class="stat-info">
+                    <div>
                         <p class="stat-label">Avg. Score</p>
                         <h3 class="stat-value">87%</h3>
                     </div>
-                    <i class="icon-target-large"></i>
+                    <fa-icon [icon]="faBullseye" class="stat-icon"></fa-icon>
                 </div>
                 <p class="stat-footer">Keep up the great work!</p>
             </div>
         </div>
 
+        <!-- GRID -->
         <div class="content-grid">
+
+            <!-- UPCOMING CLASSES -->
             <div class="panel">
                 <h2>Upcoming Classes</h2>
+
                 <div class="class-list">
                     <div class="class-item" *ngFor="let class of upcomingClasses">
                         <div class="class-indicator" [style.background]="class.color"></div>
+
                         <div class="class-details">
-                            <p class="class-name">{{class.name}}</p>
-                            <p class="class-time">{{class.time}}</p>
+                            <p class="class-name">{{ class.name }}</p>
+                            <p class="class-time">{{ class.time }}</p>
                         </div>
-                        <button class="btn-join">Join →</button>
+
+                        <button class="btn-join">
+                            Join <fa-icon [icon]="faCalendarDays"></fa-icon>
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <!-- RECENT ACTIVITY -->
             <div class="panel">
                 <h2>Recent Activity</h2>
+
                 <div class="activity-list">
                     <div class="activity-item" *ngFor="let activity of recentActivities">
                         <div class="activity-icon">
-                            <i class="icon-file"></i>
+                            <fa-icon [icon]="faFileAlt"></fa-icon>
                         </div>
+
                         <div class="activity-details">
-                            <p class="activity-action">{{activity.action}}</p>
-                            <p class="activity-meta">{{activity.subject}} • {{activity.time}}</p>
+                            <p class="activity-action">{{ activity.action }}</p>
+                            <p class="activity-meta">
+                                {{ activity.subject }} • {{ activity.time }}
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- GRID 2 -->
         <div class="content-grid mt-4">
+
+            <!-- PROGRESS -->
             <div class="panel">
                 <h2>Study Progress</h2>
+
                 <div class="progress-list">
                     <div class="progress-item" *ngFor="let course of studyProgress">
                         <div class="progress-header">
-                            <span class="progress-name">{{course.name}}</span>
-                            <span class="progress-percent">{{course.progress}}%</span>
+                            <span class="progress-name">{{ course.name }}</span>
+                            <span class="progress-percent">{{ course.progress }}%</span>
                         </div>
+
                         <div class="progress-bar-container">
                             <div class="progress-bar" [style.width.%]="course.progress"
-                                [style.background]="course.color"></div>
+                                [style.background]="course.color">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- ASSIGNMENTS -->
             <div class="panel">
                 <h2>Assignments Due</h2>
+
                 <div class="assignment-list">
                     <div class="assignment-item" *ngFor="let assignment of assignments">
                         <div class="assignment-info">
-                            <p class="assignment-title">{{assignment.title}}</p>
-                            <p class="assignment-course">{{assignment.course}}</p>
+                            <p class="assignment-title">{{ assignment.title }}</p>
+                            <p class="assignment-course">{{ assignment.course }}</p>
                         </div>
+
                         <div class="assignment-due" [class.urgent]="assignment.urgent">
-                            <i class="icon-clock"></i>
-                            <span>{{assignment.dueDate}}</span>
+                            <fa-icon [icon]="faClock"></fa-icon>
+                            <span>{{ assignment.dueDate }}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- SCHEDULE -->
         <div class="panel mt-4">
             <h2>Weekly Study Schedule</h2>
+
             <div class="schedule-grid">
                 <div class="schedule-day" *ngFor="let day of weekSchedule">
-                    <div class="day-header">{{day.day}}</div>
+                    <div class="day-header">{{ day.day }}</div>
+
                     <div class="day-sessions">
                         <div class="session" *ngFor="let session of day.sessions" [style.background]="session.color">
-                            <p class="session-name">{{session.name}}</p>
-                            <p class="session-time">{{session.time}}</p>
+                            <p class="session-name">{{ session.name }}</p>
+                            <p class="session-time">{{ session.time }}</p>
                         </div>
+
                         <div class="session-empty" *ngIf="day.sessions.length === 0">
                             No classes
                         </div>
@@ -126,5 +153,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>

@@ -1,40 +1,11 @@
+<!-- home.component.html -->
 <div class="home-page">
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <i class="icon-book"></i>
-                    <span>StudyHub</span>
-                </div>
-                <div class="nav-menu">
-                    <button class="nav-item active">
-                        <i class="icon-home"></i>
-                        <span>Dashboard</span>
-                    </button>
-                    <button class="nav-item">
-                        <i class="icon-calendar"></i>
-                        <span>Schedule</span>
-                    </button>
-                    <button class="nav-item">
-                        <i class="icon-file"></i>
-                        <span>Notes</span>
-                    </button>
-                    <button class="nav-item">
-                        <i class="icon-settings"></i>
-                        <span>Settings</span>
-                    </button>
-                    <button class="nav-item logout" (click)="onLogout()">
-                        <i class="icon-logout"></i>
-                        <span>Logout</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Use Navbar Component -->
+    <app-navbar />
 
     <div class="container main-content">
         <div class="header">
-            <h1>Welcome back, Student!</h1>
+            <h1>Welcome back, {{currentUser}}!</h1>
             <p>Here's what's happening with your studies today</p>
         </div>
 

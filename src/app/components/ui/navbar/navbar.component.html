@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container-fluid px-4">
+
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold text-primary" (click)="navigateTo('/')">
+            StudyHub
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
+
+            <!-- LEFT LINKS (AUTHENTICATED) -->
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a class="nav-link" [class.active]="isActive('/home')" (click)="navigateTo('/home')">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a class="nav-link" [class.active]="isActive('/tasks')" (click)="navigateTo('/tasks')">
+                        Tasks
+                    </a>
+                </li>
+
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a class="nav-link" [class.active]="isActive('/sessions')" (click)="navigateTo('/sessions')">
+                        Sessions
+                    </a>
+                </li>
+
+                <!-- MOBILE ONLY: Logout -->
+                <li class="nav-item d-lg-none" *ngIf="isAuthenticated">
+                    <a class="nav-link text-danger" (click)="onLogout()">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+
+            <!-- RIGHT SIDE -->
+            <div class="d-flex align-items-center gap-3">
+
+                <!-- NOT AUTHENTICATED LINKS -->
+                <ng-container *ngIf="!isAuthenticated">
+
+                    <a class="nav-link" (click)="navigateTo('/about')">
+                        About Us
+                    </a>
+
+                    <a class="nav-link" (click)="navigateTo('/login')">
+                        Login
+                    </a>
+
+                    <a class="btn btn-primary btn-sm" (click)="navigateTo('/register')">
+                        Register
+                    </a>
+
+                </ng-container>
+
+                <!-- AUTHENTICATED DROPDOWN (DESKTOP ONLY) -->
+                <div *ngIf="isAuthenticated" class="dropdown d-none d-lg-block">
+
+                    <button class="btn user-dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+
+                        <span class="avatar">
+                            {{ currentUser.charAt(0) | uppercase }}
+                        </span>
+
+                        <span class="username">
+                            {{ currentUser }}
+                        </span>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                        <li>
+                            <a class="dropdown-item" (click)="navigateTo('/profile')">Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" (click)="navigateTo('/settings')">Settings</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            <a class="dropdown-item text-danger" (click)="onLogout()">Logout</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<div class="navbar-spacer"></div>

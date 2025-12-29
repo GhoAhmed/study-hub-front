@@ -1,18 +1,5 @@
 <div class="welcome-page">
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <i class="icon-book"></i>
-                    <span>StudyHub</span>
-                </div>
-                <div class="nav-buttons">
-                    <button routerLink="/login" class="btn-link">Login</button>
-                    <button routerLink="/register" class="btn-primary">Sign Up</button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <app-navbar />
 
     <div class="container hero-section">
         <div class="hero-content">
@@ -24,17 +11,17 @@
 
         <div class="features-grid">
             <div class="feature-card">
-                <i class="icon-users"></i>
+                <fa-icon [icon]="faUsers"></fa-icon>
                 <h3>Collaborative Learning</h3>
                 <p>Connect with peers, share notes, and study together in real-time</p>
             </div>
             <div class="feature-card">
-                <i class="icon-target"></i>
+                <fa-icon [icon]="faTable"></fa-icon>
                 <h3>Goal Tracking</h3>
                 <p>Set objectives, monitor progress, and achieve your academic goals</p>
             </div>
             <div class="feature-card">
-                <i class="icon-trending"></i>
+                <fa-icon [icon]="faNewspaper"></fa-icon>
                 <h3>Performance Analytics</h3>
                 <p>Get insights into your learning patterns and optimize your study time</p>
             </div>

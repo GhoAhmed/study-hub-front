@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
+import { NavbarComponent } from '../../ui/navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  currentUser: string = 'Student';
   upcomingClasses = [
     { name: 'Advanced Mathematics', time: '10:00 AM', color: '#3b82f6' },
     { name: 'Physics Lab', time: '2:00 PM', color: '#10b981' },
@@ -97,6 +100,13 @@ export class HomeComponent {
   ];
 
   constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    const userName = localStorage.getItem('name');
+    if (userName) {
+      this.currentUser = userName;
+    }
+  }
 
   onLogout(): void {
     this.authService.logout();

@@ -1,0 +1,82 @@
+/* Spacer */
+.navbar-spacer {
+    height: 72px;
+}
+
+/* Nav links */
+.nav-link {
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #0d6efd;
+}
+
+.nav-link.active {
+    color: #0d6efd;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 15%;
+    bottom: 5px;
+    width: 70%;
+    height: 2px;
+    background-color: #0d6efd;
+}
+
+/* User dropdown */
+.user-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: none;
+    background: transparent;
+    padding: 0.4rem 0.6rem;
+}
+
+.user-dropdown:hover {
+    background: rgba(13, 110, 253, 0.08);
+    border-radius: 999px;
+}
+
+/* Avatar */
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+/* Username */
+.username {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Mobile menu card style */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: #fff;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+}

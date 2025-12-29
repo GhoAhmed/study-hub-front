@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap, map } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment.development';
 
 interface User {
   id: string;
@@ -18,7 +19,7 @@ interface AuthResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = environment.apiUrl;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$: Observable<boolean> =
     this.isAuthenticatedSubject.asObservable();
@@ -43,7 +44,7 @@ export class AuthService {
   // LOGIN
   login(email: string, password: string): Observable<User> {
     return this.http
-      .post<AuthResponse>(`${this.apiUrl}/login`, { email, password })
+      .post<AuthResponse>(`${this.apiUrl}/auth/login`, { email, password })
       .pipe(
         tap((res) => {
           localStorage.setItem('token', res.token);
@@ -59,7 +60,11 @@ export class AuthService {
   // REGISTER
   register(name: string, email: string, password: string): Observable<User> {
     return this.http
-      .post<AuthResponse>(`${this.apiUrl}/register`, { name, email, password })
+      .post<AuthResponse>(`${this.apiUrl}/auth/register`, {
+        name,
+        email,
+        password,
+      })
       .pipe(
         tap((res) => {
           localStorage.setItem('token', res.token);

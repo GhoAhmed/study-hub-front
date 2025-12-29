@@ -598,6 +598,7 @@ body {
     padding: 1rem;
     border-radius: 12px;
     transition: var(--transition);
+    cursor: pointer;
 }
 
 .activity-item:hover {
@@ -738,6 +739,7 @@ body {
     white-space: nowrap;
     flex-shrink: 0;
     border: 2px solid var(--light-grey);
+    cursor: pointer;
 }
 
 .assignment-due.urgent {
@@ -916,11 +918,11 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.6rem;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .form-group label {

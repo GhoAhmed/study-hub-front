@@ -1057,6 +1057,80 @@ body {
     font-weight: 500;
 }
 
+/* ===== VALIDATION STYLES ===== */
+.field-error {
+    display: block;
+    color: var(--danger);
+    font-size: 0.8rem;
+    margin-top: 0.375rem;
+    font-weight: 500;
+    animation: fadeIn 0.2s ease;
+}
+
+.form-input.error {
+    border-color: var(--danger);
+    background: rgba(239, 68, 68, 0.03);
+}
+
+.form-input.error:focus {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.required {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.checkbox-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-submit:disabled:hover {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Enhanced error message */
+.error-msg {
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    animation: shake 0.3s ease;
+}
+
+/* Validation Animations */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
     from {

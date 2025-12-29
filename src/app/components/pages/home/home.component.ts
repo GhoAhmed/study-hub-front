@@ -18,7 +18,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

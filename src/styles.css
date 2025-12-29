@@ -43,21 +43,23 @@
 }
 
 /* ===== GLOBAL RESET & BASE ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html,
+body {
+    height: 100%;
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(180deg,
+            var(--bg-gradient-start),
+            var(--bg-gradient-end));
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
+
 
 .container {
     width: 100%;
@@ -66,16 +68,26 @@ body {
     padding: 0 1.5rem;
 }
 
+.app-layout {
+    padding-top: 72px;
+    /* navbar height */
+    min-height: calc(100vh - 72px);
+}
+
+
 /* ===== NAVBAR - ENHANCED ===== */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    z-index: 1000;
+
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-}
-
-.navbar-spacer {
-    height: 72px;
 }
 
 .navbar-brand {
@@ -1233,4 +1245,26 @@ body {
     .hero-actions {
         flex-direction: column;
     }
+}
+
+.task-container {
+    padding: 1rem;
+}
+
+.add-task-card {
+    border-left: 4px solid #0d6efd;
+}
+
+.task-title {
+    font-weight: 600;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.deadline {
+    font-size: 0.8rem;
+    color: #dc3545;
 }

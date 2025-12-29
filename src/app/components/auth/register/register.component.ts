@@ -38,8 +38,17 @@ export class RegisterComponent {
     const fullName = `${this.firstName} ${this.lastName}`;
 
     this.authService.register(fullName, this.email, this.password).subscribe({
-      next: (user) => {
-        this.router.navigate(['/home']);
+      next: () => {
+        // Automatically log in after registration
+        this.authService.login(this.email, this.password).subscribe({
+          next: () => {
+            this.router.navigate(['/home']);
+          },
+          error: (err) => {
+            this.errorMessage =
+              err.error?.message || 'Login failed after registration';
+          },
+        });
       },
       error: (err) => {
         this.errorMessage = err.error?.message || 'Registration failed';

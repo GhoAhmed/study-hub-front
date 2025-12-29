@@ -31,6 +31,56 @@
     background-color: #0d6efd;
 }
 
+/* Remove default Bootstrap styles */
+.navbar-toggler {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Custom toggler */
+.custom-toggler {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.custom-toggler .toggler-line {
+    width: 26px;
+    height: 3px;
+    background-color: #0d6efd;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.custom-toggler:hover .toggler-line {
+    background-color: #0b5ed7;
+}
+
+/* Active animation */
+.custom-toggler.active .toggler-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.custom-toggler.active .toggler-line:nth-child(2) {
+    opacity: 0;
+}
+
+.custom-toggler.active .toggler-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 /* Avatar */
 .avatar {
     width: 36px;

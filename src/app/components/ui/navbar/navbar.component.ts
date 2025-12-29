@@ -63,12 +63,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    // Prevent body scroll when menu is open
-    if (this.isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+
+    const toggler = document.querySelector('.custom-toggler');
+    toggler?.classList.toggle('active', this.isMenuOpen);
   }
 
   closeMenu(): void {
